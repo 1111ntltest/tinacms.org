@@ -1,3 +1,3 @@
 name: pipeline.re
-'on': push_branch
+'on': push
 jobs: []
