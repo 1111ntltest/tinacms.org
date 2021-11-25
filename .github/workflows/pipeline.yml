@@ -31,6 +31,14 @@ jobs:
         with:
           name: test-artifacts
           path: test-results/
+      - - name: Custom Action
+          uses: .github/actions/action-0.yml
+          id: action-0
+          with:
+            input_name: ${{ secrets.[input_name] }}
+        - name: Results - Custom Action
+          run: |
+            echo 'input_name => ${{ steps['action-0']['outputs']['input_name']}}
   deployment-netlify:
     name: Deployment (Netlify)
     runs-on: ubuntu-latest
