@@ -4,7 +4,7 @@ export const main = async () => {
   try {
     const inputValue = core.getInput('input_name');
 
-    console.log("custom action test");
+    // comment 1
 
     core.setOutput('output_name', 'output value');
   } catch (err) {

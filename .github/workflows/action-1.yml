@@ -1,0 +1,9 @@
+name: Custom Action
+description: custom pipeline action 1
+inputs:
+  - input_name
+outputs:
+  - output_name
+runs:
+  using: node12
+  main: action-1.js
