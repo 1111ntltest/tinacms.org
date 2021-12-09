@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 
 export const main = async () => {
   try {
-    const inputValue = core.getInput('PLACEHOLDER');
+    const inputValue = core.getInput('input_name');
 
     core.setOutput('output_name', 'output value');
   } catch (err) {

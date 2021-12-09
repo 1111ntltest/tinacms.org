@@ -1,7 +1,7 @@
-name: Custom Action
+name: New Action 12
 description: custom pipeline action 0
 inputs:
-  - input_name
+  - SECRET_NAME
 outputs:
   - output_name
 runs:
