@@ -1,0 +1,10 @@
+name: New Action 1
+description: custom pipeline action 0
+inputs:
+  - SECRET_NAME
+  - SECRET_NAME2
+outputs:
+  - output_name
+runs:
+  using: node12
+  main: action-0.js
