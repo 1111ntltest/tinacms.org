@@ -1,0 +1,9 @@
+name: New Action 13
+description: custom pipeline action 1
+inputs:
+  - PLACEHOLDER
+outputs:
+  - output_name
+runs:
+  using: node12
+  main: action.js
