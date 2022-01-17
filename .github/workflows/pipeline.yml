@@ -36,8 +36,8 @@ jobs:
         uses: ./.github/actions/new-action-1
         id: new-action-1
         with:
-          SECRET_NAME: ${{ secrets.[SECRET_NAME] }}
-          SECRET_NAME2: ${{ secrets.[SECRET_NAME2] }}
+          SECRET_NAME: ${{ secrets.SECRET_NAME }}
+          SECRET_NAME2: ${{ secrets.SECRET_NAME2 }}
       - name: Results - New Action 1
         run: >
           echo 'SECRET_NAME => ${{
@@ -50,7 +50,7 @@ jobs:
         uses: ./.github/actions/new-action-13
         id: new-action-13
         with:
-          PLACEHOLDER: ${{ secrets.[PLACEHOLDER] }}
+          PLACEHOLDER: ${{ secrets.PLACEHOLDER }}
       - name: Results - New Action 13
         run: >
           echo 'PLACEHOLDER => ${{
