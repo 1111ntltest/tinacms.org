@@ -25,7 +25,7 @@ jobs:
       - name: Install dependencies and run tests
         run: npm install && npm install --save-dev playwright
       - name: Run tests
-        run: npx playwright ./tests --headed --browser=all
+        run: npx playwright test ./tests --headed --browser=all
       - name: Save artifacts (videos, screenshots, ...)
         uses: actions/upload-artifact@v2
         with:
