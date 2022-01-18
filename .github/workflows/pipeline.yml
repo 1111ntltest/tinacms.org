@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Checkout project files
         uses: actions/checkout@v2
+        with:
+          path: main
       - name: Setup nodejs and npm
         uses: actions/setup-node@v2
         with:
@@ -25,7 +27,7 @@ jobs:
       - name: Install dependencies and run tests
         run: npm install && npm install --save-dev playwright @playwright/test
       - name: Run tests
-        run: npx playwright test ./tests --headed --browser=all
+        run: npx playwright test /home/runner/main/tests --headed --browser=all
       - name: Save artifacts (videos, screenshots, ...)
         uses: actions/upload-artifact@v2
         with:
