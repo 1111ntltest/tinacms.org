@@ -1,13 +1,19 @@
- import { test, expect } from '@playwright/test';
-test('test', async ({ page }) => {
-  // Go to https://www.mozilla.org/de/
-  await page.goto('https://www.mozilla.org/de/');
-  // Click text=Hilfe zu Produkten
-  await page.click('text=Hilfe zu Produkten');
-  await expect(page).toHaveURL('https://support.mozilla.org/de/?utm_source=www.mozilla.org&utm_medium=referral&utm_campaign=footer&utm_content=support');
-  // Click #main-content >> text=Mozilla VPN
-  await Promise.all([
-    page.waitForNavigation(/*{ url: 'https://support.mozilla.org/de/products/firefox-private-network-vpn' }*/),
-    page.click('#main-content >> text=Mozilla VPN')
-  ]);
+ // example.spec.js
+const { test, expect } = require('@playwright/test');
+
+test('my test', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle(/Playwright/);
+
+  // Expect an attribute "to be strictly equal" to the value.
+  await expect(page.locator('text=Get Started').first()).toHaveAttribute('href', '/docs/intro');
+
+  // Expect an element "to be visible".
+  await expect(page.locator('text=Learn more').first()).toBeVisible();
+
+  await page.click('text=Get Started');
+  // Expect some text to be visible on the page.
+  await expect(page.locator('text=Introduction').first()).toBeVisible();
 });
