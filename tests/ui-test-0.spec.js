@@ -1,7 +1,7 @@
-// example.spec.js
+ // example.spec.js
 const { test, expect } = require('@playwright/test');
 
-test('my test', async ({ page }) => {
+test('my test', async ({ page, browserName }) => {
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
@@ -10,6 +10,6 @@ test('my test', async ({ page }) => {
   // Expect an attribute "to be strictly equal" to the value.
   await expect(page.locator('text=Get Started').first()).toHaveAttribute('href', '/docs/intro');
 
-  await page.screenshot({ path: `example-${browserType}.png` });
+  await page.screenshot({ path: `example-${browserName}.png` });
 
 });
