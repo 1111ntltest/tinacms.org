@@ -10,4 +10,6 @@ test('my test', async ({ page }) => {
   // Expect an attribute "to be strictly equal" to the value.
   await expect(page.locator('text=Get Started').first()).toHaveAttribute('href', '/docs/intro');
 
+  await page.screenshot({ path: `example-${browserType}.png` });
+
 });
