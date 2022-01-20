@@ -1,4 +1,4 @@
-  // example.spec.js
+   // example.spec.js
 const { test, expect } = require('@playwright/test');
 
 test('my test', async ({ page, browser, browserName }) => {
@@ -10,6 +10,8 @@ test('my test', async ({ page, browser, browserName }) => {
     }
   });
 
+  const page = await context.newPage();
+
   await page.goto('https://playwright.dev/');
 
   // Expect a title "to contain" a substring.
@@ -20,6 +22,6 @@ test('my test', async ({ page, browser, browserName }) => {
 
   await page.screenshot({ path: `example-${browserName}.png` });
 
-  await context.close();
+  await browser.close();
 
 });
