@@ -1,7 +1,7 @@
-   // example.spec.js
+// example.spec.js
 const { test, expect } = require('@playwright/test');
 
-test('my test', async ({ page, browser, browserName }) => {
+test('my test', async ({ browser, browserName }) => {
 
   const context = await browser.newContext({
     recordVideo: {
