@@ -34,10 +34,14 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: test-artifacts
-          path:
-            - ./example-*.png
-            - ${{ env.GITHUB_WORKSPACE }}/videos
+          name: videos
+          path: ${{ env.GITHUB_WORKSPACE }}/videos
+      - name: Save artifacts (videos, screenshots, ...)
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: ./example-*.png
       - name: New Action 1
         uses: ./.github/actions/new-action-1
         id: new-action-1
