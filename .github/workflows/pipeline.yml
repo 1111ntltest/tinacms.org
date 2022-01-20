@@ -29,15 +29,13 @@ jobs:
       - name: Run tests
         run: npx playwright test ./tests --browser=all
       - name: check output directory
-        run: |-
-          ls && echo '-------------
-          ' && cd videos && ls
+        run: ls && cd videos && ls
       - name: Save artifacts (videos, screenshots, ...)
         if: always()
         uses: actions/upload-artifact@v2
         with:
           name: videos
-          path: ./videos/*
+          path: videos/
       - name: New Action 1
         uses: ./.github/actions/new-action-1
         id: new-action-1
