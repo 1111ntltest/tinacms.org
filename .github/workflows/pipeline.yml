@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test-artifacts
-          path: test-results
+          path: $GITHUB_WORKSPACE/test-results
       - name: New Action 1
         uses: ./.github/actions/new-action-1
         id: new-action-1
