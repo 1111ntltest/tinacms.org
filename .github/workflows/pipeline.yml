@@ -24,8 +24,8 @@ jobs:
           restore-keys: ${{ runner.os }}-node-
       - name: Install dependencies
         run: >-
-          npx playwright install --with-deps && npm install --save-dev
-          @playwright/test
+          npm install && npm install --save-dev playwright @playwright/test &&
+          npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test ./tests --browser=all
       - name: Save artifacts (videos, screenshots, ...)
