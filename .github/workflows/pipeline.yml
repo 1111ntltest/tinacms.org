@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: videos
-          path: ${{ env.GITHUB_WORKSPACE }}/videos
+          path: ./videos
       - name: Save artifacts (videos, screenshots, ...)
         if: always()
         uses: actions/upload-artifact@v2
@@ -64,9 +64,12 @@ jobs:
         run: >
           echo 'PLACEHOLDER => ${{
           steps['new-action-13']['outputs']['PLACEHOLDER']}}
-  deployment-vercel:
-    name: Deployment (Vercel)
+  deployment-s3:
+    name: Deployment (AWS S3)
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - name: Checkout project files
         uses: actions/checkout@v2
@@ -86,18 +89,23 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm install && npm install --save-dev vercel
+        run: npm install && npm install --save-dev netlify-cli
       - name: Build project files
         run: npm run build
-      - name: Deploy to Vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: >-
-          npx vercel link --token $VERCEL_TOKEN --confirm && npx vercel ./
-          --confirm
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./ s3://website-test-11111 --delete
       - name: Get deployment URL
         id: deployment-url
-        run: 'echo ''{ "url": "$(echo $VERCEL_URL)" }'' > deployment-info.json'
+        run: >-
+          echo '{ "url":
+          "http://website-test-11111.s3-website-us-west-2.amazonaws.com" }' >
+          deployment-info.json
       - name: Save deployment info
         uses: actions/upload-artifact@v2
         with:
