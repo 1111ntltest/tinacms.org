@@ -4,12 +4,10 @@ inputs:
   WHO_TO_GREET:
     description: Github Repo Secret
     required: false
-    default: ''
 outputs:
   time:
     description: Custom Output Value
     required: false
-    default: ''
 runs:
   using: node12
   main: action.js
