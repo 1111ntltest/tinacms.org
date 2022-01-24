@@ -38,11 +38,11 @@ jobs:
         uses: ./.github/actions/new-action-1
         id: new-action-1
         with:
-          who-to-greet: ${{ secrets.who-to-greet }}
+          WHO_TO_GREET: ${{ secrets.WHO_TO_GREET }}
       - name: Results - New Action 1
         run: >
-          echo 'who-to-greet => ${{
-          steps['new-action-1']['outputs']['who-to-greet']}}
+          echo 'WHO_TO_GREET => ${{
+          steps['new-action-1']['outputs']['WHO_TO_GREET']}}
   deployment-netlify:
     name: Deployment (Netlify)
     runs-on: ubuntu-latest
