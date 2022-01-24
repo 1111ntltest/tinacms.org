@@ -28,8 +28,6 @@ jobs:
           npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test ./tests --browser=all
-      - name: check output directory
-        run: ls && cd videos && ls
       - name: Save artifacts (videos, screenshots, ...)
         if: always()
         uses: actions/upload-artifact@v2
@@ -40,24 +38,11 @@ jobs:
         uses: ./.github/actions/new-action-1
         id: new-action-1
         with:
-          SECRET_NAME: ${{ secrets.SECRET_NAME }}
-          SECRET_NAME2: ${{ secrets.SECRET_NAME2 }}
+          who-to-greet: ${{ secrets.who-to-greet }}
       - name: Results - New Action 1
         run: >
-          echo 'SECRET_NAME => ${{
-          steps['new-action-1']['outputs']['SECRET_NAME']}}
-
-          ,SECRET_NAME2 => ${{
-          steps['new-action-1']['outputs']['SECRET_NAME2']}}
-      - name: New Action 13
-        uses: ./.github/actions/new-action-13
-        id: new-action-13
-        with:
-          PLACEHOLDER: ${{ secrets.PLACEHOLDER }}
-      - name: Results - New Action 13
-        run: >
-          echo 'PLACEHOLDER => ${{
-          steps['new-action-13']['outputs']['PLACEHOLDER']}}
+          echo 'who-to-greet => ${{
+          steps['new-action-1']['outputs']['who-to-greet']}}
   deployment-netlify:
     name: Deployment (Netlify)
     runs-on: ubuntu-latest
