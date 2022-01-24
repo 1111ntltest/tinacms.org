@@ -1,9 +1,0 @@
-name: New Action 1
-description: custom pipeline action 0
-inputs:
-  - who-to-greet
-outputs:
-  - time
-runs:
-  using: node12
-  main: action.js
