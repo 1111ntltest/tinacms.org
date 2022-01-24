@@ -3,11 +3,9 @@ description: custom pipeline action 0
 inputs:
   WHO_TO_GREET:
     description: Github Repo Secret
-    required: false
 outputs:
   time:
     description: Custom Output Value
-    required: false
 runs:
   using: node12
   main: action.js
