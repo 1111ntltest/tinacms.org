@@ -35,7 +35,7 @@ jobs:
           name: videos
           path: videos/
       - name: New Action 1
-        uses: ./.github/actions/new-action-1
+        uses: .github/actions/new-action-1
         id: new-action-1
         with:
           who-to-greet: ${{ secrets.who-to-greet }}
