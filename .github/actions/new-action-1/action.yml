@@ -1,9 +1,13 @@
 name: New Action 1
 description: custom pipeline action 0
 inputs:
-  - WHO_TO_GREET
+  WHO_TO_GREET:
+    required: false
+    default: ''
 outputs:
-  - time
+  time:
+    required: false
+    default: ''
 runs:
   using: node12
   main: action.js
