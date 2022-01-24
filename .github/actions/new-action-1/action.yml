@@ -2,10 +2,12 @@ name: New Action 1
 description: custom pipeline action 0
 inputs:
   WHO_TO_GREET:
+    description: Github Repo Secret
     required: false
     default: ''
 outputs:
   time:
+    description: Custom Output Value
     required: false
     default: ''
 runs:
